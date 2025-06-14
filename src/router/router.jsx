@@ -10,12 +10,15 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import AuthLayouts from '../Layouts/AuthLayouts';
 import PrivatRoute from '../provider/PrivetRoute';
+import ErrorPage from '../pages/ErrorPage';
+import Loading from '../pages/Loading';
 
 const router = createBrowserRouter([
   {
     path: "/",
    Component:MainLayouts,
-   errorElement:<p>error page</p>,
+     errorElement:<ErrorPage></ErrorPage>,
+     hydrateFallbackElement:<Loading></Loading>,
    children:[
     {
         index:true,
