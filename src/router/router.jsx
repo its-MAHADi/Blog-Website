@@ -6,6 +6,10 @@ import AddBlog from '../pages/AddBlog';
 import AllBlogs from '../pages/AllBlogs';
 import FeaturedBlogs from '../pages/FeaturedBlogs';
 import WishList from '../pages/WishList';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
+import AuthLayouts from '../Layouts/AuthLayouts';
+import PrivatRoute from '../provider/PrivetRoute';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +24,9 @@ const router = createBrowserRouter([
     },
     {
         path:"/add-blog",
-        element:<AddBlog></AddBlog>
+        element: <PrivatRoute>
+            <AddBlog></AddBlog>
+        </PrivatRoute>
     },
     {
         path:"/all-blog",
@@ -32,10 +38,26 @@ const router = createBrowserRouter([
     },
     {
         path:"/Wishlist",
-        element:<WishList></WishList>
+        element: <PrivatRoute>
+            <WishList></WishList>
+        </PrivatRoute>
     },
    ]
   },
+  {
+    path:"/auth",
+    element:<AuthLayouts></AuthLayouts>,
+    children:[
+        {
+            path:"/auth/login",
+            element:<Login></Login>
+        },
+        {
+            path:"/auth/register",
+            element:<Register></Register>
+        },
+    ]
+  }
 ]);
 
 export default router

@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { use } from 'react'
 import { Link, NavLink } from 'react-router'
+import { AuthContext } from '../../provider/AuthProvider'
+import userIcon from "../../assets/user.png"
+import toast from 'react-hot-toast'
 
 const Navbar = () => {
+    const {user, logOut}=use(AuthContext);
+     const handleLogOut=()=>{
+    logOut().then(() => {
+      toast.success('Logged out successfully!');
+    }).catch((error) => {
+      toast.error(`Logout failed: ${error.message}`);
+    });
+    }
+
   return (
    <div className="navbar p-0 bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-sm">
   <div className="navbar-start">
@@ -30,6 +42,7 @@ const Navbar = () => {
       </ul>
     </div>
     <a className="font-bold text-2xl">.Blog</a>
+    {/* <h1>{user && user.email}</h1> */}
   </div>
   <div className="navbar-center hidden lg:flex">
     <div className="flex items-center  gap-6">
@@ -40,8 +53,23 @@ const Navbar = () => {
           <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/Wishlist"> Wishlist</NavLink>
         </div>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Login</a>
+  <div className="navbar-end gap-3">
+    {/* <img className='rounded-full border-2'   src={user?.photoURL || userIcon} alt="" /> */}
+     {user?.photoURL && (
+        <img
+          className="w-12 h-12 rounded-full border-2"
+          src={user.photoURL}
+          alt="User Profile"
+        />
+      )}
+
+    {
+        user? <button onClick={handleLogOut} className="btn btn-outline  btn-success text-white border-2 border-white">Logout</button> :  <Link to="/auth/login" className="btn btn-outline  btn-success text-white border-2 border-white">Login</Link>
+    }
+   
+   {
+    user?  <Link to="/auth/register" className="btn btn-outline btn-primary text-white border-2 border-white hidden">Register</Link> :  <Link to="/auth/register" className="btn btn-outline btn-primary text-white border-2 border-white">Register</Link>
+   }
   </div>
 </div>
   )
