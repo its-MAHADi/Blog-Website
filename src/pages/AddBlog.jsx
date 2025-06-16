@@ -34,7 +34,7 @@ const AddBlog = () => {
 
 
   return (
-     <form onSubmit={handleBlogSubmit} className="max-w-2xl mx-auto p-4 my-6 bg-white shadow-md rounded-lg space-y-4">
+     <form onSubmit={handleBlogSubmit} className="max-w-2xl mx-auto mt-16 p-4 my-6 bg-white shadow-md rounded-lg space-y-4">
       <h2 className="text-2xl font-bold mb-4 text-center">Create New Blog</h2>
 
       <input

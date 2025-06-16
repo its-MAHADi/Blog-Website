@@ -21,9 +21,10 @@ const router = createBrowserRouter([
      hydrateFallbackElement:<Loading></Loading>,
    children:[
     {
-        index:true,
         path:"/",
-        element:<Home></Home>
+        element:<Home></Home>,
+        loader:()=>fetch('http://localhost:3000/blogs'),
+        hydrateFallbackElement:<Loading></Loading>
     },
     {
         path:"/add-blog",

@@ -15,7 +15,7 @@ const Navbar = () => {
     }
 
   return (
-   <div className="navbar p-0 bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-sm">
+   <div className="navbar fixed top-0 left-0 w-full z-50 p-0 bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="cursor-pointer mr-2 lg:hidden">
