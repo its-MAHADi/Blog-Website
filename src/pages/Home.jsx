@@ -3,6 +3,7 @@ import Slider from './Shared/Slider'
 import { useLoaderData } from 'react-router'
 import RecentBlog from './Shared/RecentBlog'
 import NewsLetter from './Shared/NewsLetter'
+import TipsSection from './Shared/TipsSection'
 
 const Home = () => {
     const blogData = useLoaderData()
@@ -11,6 +12,7 @@ const Home = () => {
      <Slider blogs={blogData}></Slider>
      <RecentBlog key={blogData._id} blogCards={blogData}></RecentBlog>
      <NewsLetter></NewsLetter>
+     <TipsSection></TipsSection>
     </div>
   )
 }
