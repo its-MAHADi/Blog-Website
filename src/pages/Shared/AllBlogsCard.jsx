@@ -2,25 +2,21 @@ import React from 'react'
 import { Fade } from 'react-awesome-reveal'
 import { Link } from 'react-router'
 
-const RecentBlog = ({ blogCards}) => {
+const AllBlogsCard = ({singleBlog}) => {
   return (
-    <div className='my-7'>
-      <h1 className='text-3xl font-bold text-center my-6'>Recent blog posts</h1>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 '>
-           <Fade direction="up" cascade triggerOnce={true} duration={600}>
-
-              {
-        blogCards.map((blogCard)=>(
-            <div key={blogCard._id} className="card bg-base-100  shadow-sm">
+    <div>
+        <Fade direction="up" cascade triggerOnce={true} duration={600}>
+     
+       <div  className="card bg-base-100  shadow-sm">
   <figure>
     <img
-      src={blogCard.imageUrl}
+      src={singleBlog.imageUrl}
       alt="Shoes" />
   </figure>
   <div className="card-body">
-    <h2 className="card-title">{blogCard.category}</h2>
-    <p className='text-[18px] text-blue-500 font-semibold'>{blogCard.title}</p>
-    <p>{blogCard.shortDesc}</p>
+    <h2 className="card-title">{singleBlog.category}</h2>
+    <p className='text-[18px] text-blue-500 font-semibold'>{singleBlog.title}</p>
+    <p>{singleBlog.shortDesc}</p>
     <div className="card-actions  py-1">
      <div className='flex items-center lg:gap-5 md:gap-5 gap-2 w-full'>
          <Link className="relative inline-flex items-center px-12 py-2 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-indigo-600 rounded-2xl hover:text-white group hover:bg-gray-50">
@@ -42,13 +38,10 @@ const RecentBlog = ({ blogCards}) => {
     </div>
   </div>
 </div>
-        ))
-      }
-
+      
            </Fade>
-        </div>
     </div>
   )
 }
 
-export default RecentBlog
+export default AllBlogsCard
