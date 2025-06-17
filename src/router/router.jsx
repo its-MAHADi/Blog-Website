@@ -12,6 +12,7 @@ import AuthLayouts from '../Layouts/AuthLayouts';
 import PrivatRoute from '../provider/PrivetRoute';
 import ErrorPage from '../pages/ErrorPage';
 import Loading from '../pages/Loading';
+import BlogDetails from '../pages/BlogDetails';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,14 @@ const router = createBrowserRouter([
     },
    ]
   },
+   {
+              path:"/blog-details/:id",
+              element:<PrivatRoute>
+                <BlogDetails></BlogDetails>
+              </PrivatRoute>,
+               loader:()=>fetch('http://localhost:3000/all-blogs'),
+               hydrateFallbackElement:<Loading></Loading>,
+            },
   {
     path:"/auth",
     element:<AuthLayouts></AuthLayouts>,
