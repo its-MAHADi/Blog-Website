@@ -10,7 +10,7 @@ const CommentCard = ({blog}) => {
 //   const { id } = useParams();
 const {_id} = blog
 
-  const isBlogOwner = blog?.userEmail === user?.email;
+  const isBlogOwner = user && blog?.userEmail === user?.email;
 
   useEffect(() => {
     const fetchComments = async () => {

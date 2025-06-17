@@ -13,6 +13,7 @@ import PrivatRoute from '../provider/PrivetRoute';
 import ErrorPage from '../pages/ErrorPage';
 import Loading from '../pages/Loading';
 import BlogDetails from '../pages/BlogDetails';
+import UpdateBlog from '../pages/UpdateBlog';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
               </PrivatRoute>,
                loader:()=>fetch('http://localhost:3000/all-blogs'),
                hydrateFallbackElement:<Loading></Loading>,
+            },
+              {
+              path:"/update-blog/:id",
+              element:<UpdateBlog></UpdateBlog>,
+              loader:({params})=>fetch(`http://localhost:3000/all-blogs/${params.id}`),
             },
   {
     path:"/auth",

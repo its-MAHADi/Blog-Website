@@ -1,49 +1,53 @@
-import axios from 'axios';
-import { useNavigate } from 'react-router';
+import React from 'react'
+import { useLoaderData, useNavigate } from 'react-router';
+import Navbar from './Shared/Navbar';
 import Swal from 'sweetalert2';
 
-const AddBlog = () => {
+const UpdateBlog = () => {
+    const {_id,title,category,imageUrl,shortDesc,longDesc,} = useLoaderData()
     const navigate = useNavigate();
-
- const handleBlogSubmit = e =>{
-   e.preventDefault();
+    const handleUpdateBlog = e =>{
+    e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const blogdata = Object.fromEntries(formData.entries())
-    // console.log(blogdata)
+    const updateBlog = Object.fromEntries(formData.entries())
+    console.log(updateBlog)
 
-    // blogdata.status = "active"
-
-    //send blog data to the db
-    axios.post('http://localhost:3000/blogs',blogdata)
-    .then(res =>{
-        if (res.data.insertedId){
+  //send updated group to the db
+    fetch(`http://localhost:3000/all-blogs/${_id}`,{
+        method:'PUT',
+        headers:{
+            'content-type' : 'application/json'
+        },
+        body:JSON.stringify(updateBlog)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.modifiedCount){
           Swal.fire({
-        position: "top-bottom",
-        icon: "success",
-        title: "Blog added successful!",
-        showConfirmButton: false,
-        timer: 1500
-         });
-          navigate("/all-blog");
+          position: "top-bottom",
+          icon: "success",
+          title: "Blog updated successfully!",
+          showConfirmButton: false,
+          timer: 1500
+           });
+            navigate("/all-blog");
         }
-         form.reset();
-         
     })
-    .catch(error =>{
-      console.log(error)
-    })
-   
- }
 
-
+    }
+    
+  
   return (
-     <form onSubmit={handleBlogSubmit} className="max-w-2xl mx-auto mt-16 p-4 my-6 bg-white shadow-md rounded-lg space-y-4">
-      <h2 className="text-2xl font-bold mb-4 text-center">Create New Blog</h2>
+    <div>
+        <Navbar></Navbar>
+       <form onSubmit={handleUpdateBlog} className="max-w-2xl mx-auto mt-16 p-4 my-6 bg-white shadow-md rounded-lg space-y-4">
+      <h2 className="text-2xl font-bold mb-4 text-center">Update Blog</h2>
 
       <input
         type="text"
         name="title"
+        defaultValue={title}
         placeholder="Blog Title"
         // value={blogData.title}
         // onChange={handleChange}
@@ -54,6 +58,7 @@ const AddBlog = () => {
       <input
         type="text"
         name="imageUrl"
+        defaultValue={imageUrl}
         placeholder="Image URL"
         // value={blogData.imageUrl}
         // onChange={handleChange}
@@ -64,6 +69,7 @@ const AddBlog = () => {
          <select
       id="category"
       name="category"
+      defaultValue={category}
       // value={blogData.category}
       // onChange={handleChange}
       className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -84,6 +90,7 @@ const AddBlog = () => {
 
       <textarea
         name="shortDesc"
+        defaultValue={shortDesc}
         placeholder="Short Description"
         // value={blogData.shortDesc}
         // onChange={handleChange}
@@ -94,6 +101,7 @@ const AddBlog = () => {
 
       <textarea
         name="longDesc"
+        defaultValue={longDesc}
         placeholder="Long Description"
         // value={blogData.longDesc}
         // onChange={handleChange}
@@ -106,10 +114,11 @@ const AddBlog = () => {
         type="submit"
         className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
       >
-        Submit Blog
+        update
       </button>
     </form>
+    </div>
   )
 }
 
-export default AddBlog
+export default UpdateBlog
