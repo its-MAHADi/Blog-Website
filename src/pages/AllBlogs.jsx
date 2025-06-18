@@ -1,12 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState("");
   const [search, setSearch] = useState("");
+   const { user } = use(AuthContext)
+   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -18,9 +22,52 @@ const AllBlogs = () => {
     fetchBlogs();
   }, [category, search]);
 
+  //wishlist
+  const handleAddToWishlist = async (blog) => {
+  if (!user?.email) {
+    return Swal.fire({
+      icon: 'warning',
+      title: 'Login Required',
+      text: 'Please log in to add to wishlist.',
+    });
+  }
+
+  const wishlistItem = {
+    blogId: blog._id,
+    title: blog.title,
+    imageUrl: blog.imageUrl,
+    category: blog.category,
+    shortDesc: blog.shortDesc,
+    longDesc: blog.longDesc,
+    email: user.email,
+  };
+
+  try {
+    const res = await axios.post("http://localhost:3000/wishlist", wishlistItem);
+    if (res.data.insertedId) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Added!',
+        text: 'Blog has been added to your wishlist.',
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      navigate("/wishlist");
+    }
+  } catch (error) {
+    console.error("Failed to add to wishlist:", error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Failed to add to wishlist.',
+    });
+  }
+};
+
+
   return (
     <div className="max-w-7xl mx-auto p-4 mt-16">
-      <h1 className="text-4xl font-bold text-center mb-8 text-indigo-700"> All Blogs</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-700 mb-8 underline decoration-blue-300"> All Blogs</h1>
 
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -72,13 +119,13 @@ const AllBlogs = () => {
                    <span className="relative">Details</span>
                    </Link>
                
-                     <Link className="relative inline-flex items-center justify-start px-10 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-xl group">
+                     <button  onClick={() =>handleAddToWishlist(blog)} className="relative inline-flex items-center justify-start px-10 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-xl group">
                    <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4">
                        <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
                    </span>
                    <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-red-600 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
                    <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">wishlist</span>
-                   </Link>
+                   </button>
                     </div>
                    </div>
               </div>

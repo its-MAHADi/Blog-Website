@@ -1,7 +1,6 @@
 import React, { use } from 'react'
 import { Link, NavLink } from 'react-router'
 import { AuthContext } from '../../provider/AuthProvider'
-import userIcon from "../../assets/user.png"
 import toast from 'react-hot-toast'
 
 const Navbar = () => {
@@ -15,7 +14,7 @@ const Navbar = () => {
     }
 
   return (
-   <div className="navbar fixed top-0 left-0 w-full z-50 p-0 bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-sm px-1">
+   <div className="navbar fixed top-0 left-0 w-full z-50 p-0 bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-sm px-2">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="cursor-pointer mr-2 lg:hidden">
@@ -37,7 +36,7 @@ const Navbar = () => {
             <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/Featured-blog"> Featured Blogs</NavLink>
             </li>
             <li>
-          <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/Wishlist"> Wishlist</NavLink>
+          <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/Wishlist"> My Wishlist</NavLink>
             </li>
       </ul>
     </div>
@@ -50,7 +49,7 @@ const Navbar = () => {
           <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/add-blog">Add Blog</NavLink>
           <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/all-blog">All blogs</NavLink>
           <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/Featured-blog"> Featured Blogs</NavLink>
-          <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/Wishlist"> Wishlist</NavLink>
+          <NavLink  className={({isActive})=>(isActive? "border-b-2 text-white" : "")} to="/Wishlist"> My Wishlist</NavLink>
         </div>
   </div>
   <div className="navbar-end gap-3">

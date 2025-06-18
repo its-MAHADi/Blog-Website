@@ -49,8 +49,6 @@ const UpdateBlog = () => {
         name="title"
         defaultValue={title}
         placeholder="Blog Title"
-        // value={blogData.title}
-        // onChange={handleChange}
         className="w-full border rounded px-4 py-2"
         required
       />
@@ -60,8 +58,6 @@ const UpdateBlog = () => {
         name="imageUrl"
         defaultValue={imageUrl}
         placeholder="Image URL"
-        // value={blogData.imageUrl}
-        // onChange={handleChange}
         className="w-full border rounded px-4 py-2"
         required
       />
@@ -70,8 +66,6 @@ const UpdateBlog = () => {
       id="category"
       name="category"
       defaultValue={category}
-      // value={blogData.category}
-      // onChange={handleChange}
       className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
       required
     >
@@ -92,8 +86,6 @@ const UpdateBlog = () => {
         name="shortDesc"
         defaultValue={shortDesc}
         placeholder="Short Description"
-        // value={blogData.shortDesc}
-        // onChange={handleChange}
         className="w-full border rounded px-4 py-2"
         rows={2}
         required
@@ -103,8 +95,6 @@ const UpdateBlog = () => {
         name="longDesc"
         defaultValue={longDesc}
         placeholder="Long Description"
-        // value={blogData.longDesc}
-        // onChange={handleChange}
         className="w-full border rounded px-4 py-2"
         rows={5}
         required

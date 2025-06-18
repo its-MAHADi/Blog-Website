@@ -54,9 +54,7 @@ const router = createBrowserRouter([
   },
    {
               path:"/blog-details/:id",
-              element:<PrivatRoute>
-                <BlogDetails></BlogDetails>
-              </PrivatRoute>,
+              element:<BlogDetails></BlogDetails>,
                loader:()=>fetch('http://localhost:3000/all-blogs'),
                hydrateFallbackElement:<Loading></Loading>,
             },

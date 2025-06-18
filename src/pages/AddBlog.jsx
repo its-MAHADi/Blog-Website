@@ -12,8 +12,6 @@ const AddBlog = () => {
     const blogdata = Object.fromEntries(formData.entries())
     // console.log(blogdata)
 
-    // blogdata.status = "active"
-
     //send blog data to the db
     axios.post('http://localhost:3000/blogs',blogdata)
     .then(res =>{
@@ -39,14 +37,12 @@ const AddBlog = () => {
 
   return (
      <form onSubmit={handleBlogSubmit} className="max-w-2xl mx-auto mt-16 p-4 my-6 bg-white shadow-md rounded-lg space-y-4">
-      <h2 className="text-2xl font-bold mb-4 text-center">Create New Blog</h2>
+      <h2 className="text-3xl sm:text-4xl font-bold text-center text-blue-700 mb-8 underline decoration-blue-300">Create New Blog</h2>
 
       <input
         type="text"
         name="title"
         placeholder="Blog Title"
-        // value={blogData.title}
-        // onChange={handleChange}
         className="w-full border rounded px-4 py-2"
         required
       />
@@ -55,8 +51,6 @@ const AddBlog = () => {
         type="text"
         name="imageUrl"
         placeholder="Image URL"
-        // value={blogData.imageUrl}
-        // onChange={handleChange}
         className="w-full border rounded px-4 py-2"
         required
       />
@@ -64,8 +58,6 @@ const AddBlog = () => {
          <select
       id="category"
       name="category"
-      // value={blogData.category}
-      // onChange={handleChange}
       className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
       required
     >
@@ -85,8 +77,6 @@ const AddBlog = () => {
       <textarea
         name="shortDesc"
         placeholder="Short Description"
-        // value={blogData.shortDesc}
-        // onChange={handleChange}
         className="w-full border rounded px-4 py-2"
         rows={2}
         required
@@ -95,8 +85,6 @@ const AddBlog = () => {
       <textarea
         name="longDesc"
         placeholder="Long Description"
-        // value={blogData.longDesc}
-        // onChange={handleChange}
         className="w-full border rounded px-4 py-2"
         rows={5}
         required

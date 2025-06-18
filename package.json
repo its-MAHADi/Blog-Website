@@ -12,6 +12,7 @@
   "dependencies": {
     "@table-library/react-table-library": "^4.1.15",
     "@tailwindcss/vite": "^4.1.10",
+    "@tanstack/react-table": "^8.21.3",
     "axios": "^1.10.0",
     "firebase": "^11.9.1",
     "framer-motion": "^12.18.1",

@@ -2,8 +2,8 @@ import React, { use, useEffect, useState } from 'react'
 import { AuthContext } from '../../provider/AuthProvider';
 import axios from 'axios';
 
-
 const CommentCard = ({blog}) => {
+    
      const {user} = use(AuthContext);
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
