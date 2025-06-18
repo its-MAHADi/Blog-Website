@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import app from '../firebase/firebase.config';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import axios from 'axios';
 
 export const AuthContext = createContext();
 
@@ -40,6 +41,16 @@ const [user,setUser] = useState(null)
    const unRegister= onAuthStateChanged(auth,(currentUser)=>{
          setUser(currentUser)
          setLoading(false)
+         if(currentUser?.email){
+            const userData = {email:currentUser.email}
+            axios.post('http://localhost:3000/jwt',userData,{
+                withCredentials:true
+            })
+            .then(res=>{
+                console.log(res.data)
+            })
+            .catch(error => console.log(error))
+         }
      });
       return ()=>{
             unRegister();

@@ -8,10 +8,13 @@ const WishList = () => {
   const { user } = use(AuthContext)
   const [wishlist, setWishlist] = useState([]);
 
+  // console.log(user.accessToken)
+
   useEffect(() => {
     if (user?.email) {
-      axios
-        .get(`http://localhost:3000/wishlist?email=${user.email}`)
+      axios.get(`http://localhost:3000/wishlist?email=${user.email}`,{
+        withCredentials:true,
+      })
         .then((res) => setWishlist(res.data));
     }
   }, [user]);
