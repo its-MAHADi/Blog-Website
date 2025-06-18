@@ -3,7 +3,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 import axios from 'axios';
 
 const CommentCard = ({blog}) => {
-    
+
      const {user} = use(AuthContext);
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
@@ -14,7 +14,7 @@ const {_id} = blog
 
   useEffect(() => {
     const fetchComments = async () => {
-      const res = await axios.get(`http://localhost:3000/comments/${_id}`);
+      const res = await axios.get(`https://blog-server-eight-taupe.vercel.app/comments/${_id}`);
       setComments(res.data);
     };
     fetchComments();
@@ -30,11 +30,11 @@ const {_id} = blog
      userEmail:user.email
   };
 
-  await axios.post('http://localhost:3000/comments', newComment);
+  await axios.post('https://blog-server-eight-taupe.vercel.app/comments', newComment);
   setCommentText('');
   
 
-  const res = await axios.get(`http://localhost:3000/comments/${_id}`);
+  const res = await axios.get(`https://blog-server-eight-taupe.vercel.app/comments/${_id}`);
   setComments(res.data);
 };
 

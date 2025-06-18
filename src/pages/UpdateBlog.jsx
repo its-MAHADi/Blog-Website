@@ -11,10 +11,10 @@ const UpdateBlog = () => {
     const form = e.target;
     const formData = new FormData(form);
     const updateBlog = Object.fromEntries(formData.entries())
-    console.log(updateBlog)
+   // console.log(updateBlog)
 
   //send updated group to the db
-    fetch(`http://localhost:3000/all-blogs/${_id}`,{
+    fetch(`https://blog-server-eight-taupe.vercel.app/all-blogs/${_id}`,{
         method:'PUT',
         headers:{
             'content-type' : 'application/json'

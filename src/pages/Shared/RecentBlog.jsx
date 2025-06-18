@@ -29,7 +29,7 @@ const RecentBlog = ({ blogCards}) => {
   };
 
   try {
-    const res = await axios.post("http://localhost:3000/wishlist", wishlistItem);
+    const res = await axios.post("https://blog-server-eight-taupe.vercel.app/wishlist", wishlistItem);
     if (res.data.insertedId) {
       Swal.fire({
         icon: 'success',

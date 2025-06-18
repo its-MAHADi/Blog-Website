@@ -13,7 +13,7 @@ const AddBlog = () => {
     // console.log(blogdata)
 
     //send blog data to the db
-    axios.post('http://localhost:3000/blogs',blogdata)
+    axios.post('https://blog-server-eight-taupe.vercel.app/blogs',blogdata)
     .then(res =>{
         if (res.data.insertedId){
           Swal.fire({

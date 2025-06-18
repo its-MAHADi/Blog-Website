@@ -12,7 +12,7 @@ const WishList = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:3000/wishlist?email=${user.email}`,{
+      axios.get(`https://blog-server-eight-taupe.vercel.app/wishlist?email=${user.email}`,{
         withCredentials:true,
       })
         .then((res) => setWishlist(res.data));
@@ -32,7 +32,7 @@ const WishList = () => {
 
   if (result.isConfirmed) {
     try {
-      await axios.delete(`http://localhost:3000/wishlist/${id}`);
+      await axios.delete(`https://blog-server-eight-taupe.vercel.app/wishlist/${id}`);
       setWishlist((prev) => prev.filter((item) => item._id !== id));
 
       Swal.fire(

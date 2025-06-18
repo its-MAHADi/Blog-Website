@@ -14,7 +14,7 @@ const AllBlogs = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await axios.get("http://localhost:3000/all-blogs", {
+      const res = await axios.get("https://blog-server-eight-taupe.vercel.app/all-blogs", {
         params: { category, search },
       });
       setBlogs(res.data);
@@ -43,7 +43,7 @@ const AllBlogs = () => {
   };
 
   try {
-    const res = await axios.post("http://localhost:3000/wishlist", wishlistItem);
+    const res = await axios.post("https://blog-server-eight-taupe.vercel.app/wishlist", wishlistItem);
     if (res.data.insertedId) {
       Swal.fire({
         icon: 'success',
@@ -55,7 +55,7 @@ const AllBlogs = () => {
       navigate("/wishlist");
     }
   } catch (error) {
-    console.error("Failed to add to wishlist:", error);
+   // console.error("Failed to add to wishlist:", error);
     Swal.fire({
       icon: 'error',
       title: 'Oops...',

@@ -7,7 +7,7 @@ const FeaturedBlogs = () => {
   const [sortAsc, setSortAsc] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/featured-blogs')
+    axios.get('https://blog-server-eight-taupe.vercel.app/featured-blogs')
       .then(res => {
         const sorted = res.data.sort((a, b) =>
           sortAsc ? a.wordCount - b.wordCount : b.wordCount - a.wordCount

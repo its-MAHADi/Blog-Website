@@ -43,7 +43,7 @@ const Login = () => {
 
      //google Login
     const handleGoogleLogin =()=>{
-      console.log("click hocche");
+     // console.log("click hocche");
       signInWithPopup(auth,provider)
       .then(result =>{
          const user = result.user;

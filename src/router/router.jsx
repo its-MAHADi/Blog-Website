@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     {
         path:"/",
         element:<Home></Home>,
-        loader:()=>fetch('http://localhost:3000/blogs'),
+        loader:()=>fetch('https://blog-server-eight-taupe.vercel.app/blogs'),
         hydrateFallbackElement:<Loading></Loading>
     },
     {
@@ -55,13 +55,13 @@ const router = createBrowserRouter([
    {
               path:"/blog-details/:id",
               element:<BlogDetails></BlogDetails>,
-               loader:()=>fetch('http://localhost:3000/all-blogs'),
+               loader:()=>fetch('https://blog-server-eight-taupe.vercel.app/all-blogs'),
                hydrateFallbackElement:<Loading></Loading>,
             },
               {
               path:"/update-blog/:id",
               element:<UpdateBlog></UpdateBlog>,
-              loader:({params})=>fetch(`http://localhost:3000/all-blogs/${params.id}`),
+              loader:({params})=>fetch(`https://blog-server-eight-taupe.vercel.app/all-blogs/${params.id}`),
             },
   {
     path:"/auth",
