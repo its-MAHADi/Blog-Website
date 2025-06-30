@@ -7,7 +7,7 @@ DevBlog is a full-stack blogging platform where users can read blogs, filter by 
 🔗 [Visit DevBlog](https://blog-website-9cf78.web.app/)
 
 ## 💻 GitHub Repository
-🔗 [GitHub Repo](https://github.com/its-MAHADi/Blog-website)
+🔗 [GitHub Repo](https://github.com/its-MAHADi/Blog-Website)
 
 ---
 
