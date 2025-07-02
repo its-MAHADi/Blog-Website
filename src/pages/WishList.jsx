@@ -69,7 +69,7 @@ const WishList = () => {
               <div className="flex gap-3 mt-4">
                 <button
                   onClick={() => handleRemove(item._id)}
-                  className="bg-red-500 text-white px-4 py-1 rounded"
+                  className="bg-red-500 text-white px-4 py-1 rounded cursor-pointer"
                 >
                   Remove
                 </button>

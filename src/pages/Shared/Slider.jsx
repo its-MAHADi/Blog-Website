@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from 'swiper/modules'
 import { Typewriter } from 'react-simple-typewriter';
+import { Link } from 'react-router';
 
 const Slider = ({ blogs}) => {
   return (
@@ -45,9 +46,9 @@ const Slider = ({ blogs}) => {
                 </h1>
                   <h2 className="text-3xl font-bold">{blog.title}</h2>
                   <p className="text-xm">{blog.shortDesc.slice(0, 100)}...</p>
-                  <button to="/create-group" className="mt-2 px-4 py-1 bg-amber-500 hover:bg-indigo-600 hover:text-white text-black cursor-pointer font-semibold rounded">
-                    Create Hobbys
-                  </button>
+                  <Link to="/add-blog" className="mt-2 px-4 py-1 bg-amber-500 hover:bg-indigo-600 hover:text-white text-black cursor-pointer font-semibold rounded">
+                    Create Blog
+                  </Link>
                 </div>
               </div>
             </SwiperSlide>

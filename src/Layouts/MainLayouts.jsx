@@ -7,7 +7,7 @@ import Loading from '../pages/Loading'
 const MainLayouts = () => {
     const {state} = useNavigation();
   return (
-    <div className='max-w-7xl mx-auto px-1 '>
+    <div className='max-w-7xl mx-auto '>
         <Navbar></Navbar>
      <div className='min-h-[calc(100vh-374px)] mx-auto'>
            {state=="loading"? <Loading/> : <Outlet></Outlet> }
