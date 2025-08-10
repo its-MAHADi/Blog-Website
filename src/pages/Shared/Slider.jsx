@@ -43,7 +43,7 @@ const Slider = ({ blogs }) => {
               <div className="text-left">
                 <Link
                   to="/add-blog"
-                  className="mt-2 inline-block px-4 py-1 bg-amber-500 hover:bg-indigo-600 hover:text-white text-black cursor-pointer font-semibold rounded"
+                  className="mt-2 inline-block px-4 py-1 bg-blue-700 text-white cursor-pointer font-semibold rounded"
                 >
                   Create Blog
                 </Link>
